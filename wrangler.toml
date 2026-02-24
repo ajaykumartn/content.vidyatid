@@ -1,0 +1,14 @@
+name = "vidyatid-content-engine"
+main = "worker.js"
+compatibility_date = "2024-12-01"
+workers_dev = true
+
+[ai]
+binding = "AI"
+
+[assets]
+directory = "./static"
+binding = "ASSETS"
+
+[observability]
+enabled = true

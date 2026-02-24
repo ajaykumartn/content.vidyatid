@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vidyatid Content Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-100 text-slate-900">
+    <div class="min-h-screen flex">
+      <aside class="w-72 bg-slate-900 text-white p-5 space-y-4 sticky top-0 h-screen overflow-y-auto">
+        <h1 class="text-xl font-bold">Vidyatid Content Engine</h1>
+        <p class="text-sm text-slate-300">Serverless content generation dashboard</p>
+        <nav id="sidebarNav" class="space-y-2"></nav>
+      </aside>
+
+      <main class="flex-1 p-6 lg:p-8 space-y-8">
+        <section class="bg-white rounded-xl shadow p-5">
+          <h2 class="text-2xl font-semibold">Dashboard</h2>
+          <p class="text-slate-600">Choose a generator from the sidebar, complete the form, and click Generate.</p>
+        </section>
+
+        <section id="formsRoot" class="space-y-6"></section>
+      </main>
+    </div>
+
+    <template id="moduleTemplate">
+      <article class="bg-white rounded-xl shadow p-5 space-y-4" data-module>
+        <div>
+          <h3 class="text-xl font-semibold" data-title></h3>
+          <p class="text-sm text-slate-600" data-description></p>
+        </div>
+        <form class="space-y-3" data-form></form>
+        <div class="flex items-center gap-3">
+          <button class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500" type="button" data-generate>
+            Generate
+          </button>
+          <span class="text-sm text-slate-500 hidden" data-loading>Generating...</span>
+        </div>
+        <div class="space-y-3 hidden" data-output-wrap>
+          <div class="flex flex-wrap gap-2">
+            <button class="px-3 py-2 text-sm bg-slate-200 rounded" type="button" data-copy>Copy Output</button>
+            <button class="px-3 py-2 text-sm bg-slate-200 rounded" type="button" data-download-json>Download JSON</button>
+            <button class="px-3 py-2 text-sm bg-slate-200 rounded hidden" type="button" data-download-srt>Download SRT</button>
+            <button class="px-3 py-2 text-sm bg-slate-200 rounded hidden" type="button" data-download-carousel>Download Carousel Text</button>
+            <button class="px-3 py-2 text-sm bg-slate-200 rounded hidden" type="button" data-download-thumbnail>Download Thumbnail Text</button>
+          </div>
+          <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto" data-output></pre>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
